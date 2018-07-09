@@ -13,7 +13,8 @@
 <%
 
 ArrayList<String> list = new ArrayList<String>();
-JSONArray arrayObj = new JSONArray();
+//json array to hold all rows
+
 JSONArray data = new JSONArray();
 
 int count = 0;
@@ -41,6 +42,7 @@ PreparedStatement ps=conn.prepareStatement("select * from staff_attendance");
       while(rs.next())
 	  {
 	  count++;
+	  //json array to hold one row ,the row adds successively in while loop
 	  JSONArray ja = new JSONArray();
 	  ja.put(rs.getInt("id"));
 	   ja.put(rs.getInt("staff_id"));
@@ -48,7 +50,7 @@ PreparedStatement ps=conn.prepareStatement("select * from staff_attendance");
        ja.put(rs.getInt("status"));
 	   ja.put(rs.getString("comments"));
 	   ja.put(rs.getInt("image"));
-
+//inserting in main array to be displayed in front
 	   data.put(ja);
 	   //break;
 	  //out.println(arrayObj);
@@ -63,7 +65,7 @@ PreparedStatement ps=conn.prepareStatement("select * from staff_attendance");
 
 		}
 
-
+//parameters needed for datable all into jsonobject
 result.put("aaData", data);
 result.put("sEcho",1);
 result.put("iTotalRecords",count);
