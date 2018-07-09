@@ -12,7 +12,7 @@
     <%@ page import="java.util.Date"%>
 <%
 
-ArrayList<String> list = new ArrayList<String>();
+
 //json array to hold all rows
 
 JSONArray data = new JSONArray();
